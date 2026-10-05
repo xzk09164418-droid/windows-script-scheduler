@@ -1,0 +1,19 @@
+# Copy to config.yaml; edit the executable before enabling a schedule.
+defaults:
+  poll_interval: 2
+  stable_dead: 10
+notify:
+  enabled: false
+  sendkey: ''
+queues:
+- name: 示例队列
+  enabled: false
+  times: ['04:00']
+  tasks:
+  - name: 示例程序
+    type: launch_wait
+    exe: 'C:/Tools/YourTool/tool.exe'
+    args: []
+    execution_mode: background
+    timeout: 300
+    check_exit_code: true

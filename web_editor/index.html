@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>配置工作台 · 浏览器版</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">≋</span><div>配置工作台<small>TASK SCHEDULER</small></div></div>
+    <div class="local-badge"><i></i> 本地配置 · 浏览器版</div>
+    <label class="search"><span>⌕</span><input id="search" placeholder="搜索队列或任务" aria-label="搜索队列或任务"></label>
+    <nav id="navigation" aria-label="配置导航"></nav>
+    <div class="sidebar-actions"><button id="add-queue">＋ 新建队列</button><button id="add-task">＋ 新建任务</button></div>
+    <div class="sidebar-footer">前端 Node.js · 后端 Python<br>使用你的浏览器，无内置浏览器内核</div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div class="file"><span>YAML</span><div id="file-path">正在连接配置服务…</div></div><div class="toolbar"><button id="reload">重新载入</button><button id="validate">✓ 校验</button><button id="save" class="primary">保存配置 <kbd>Ctrl S</kbd></button></div></header>
+    <main>
+      <div class="breadcrumbs" id="breadcrumbs">配置 / 全局设置</div>
+      <div class="page-heading"><div><div class="eyebrow">CONFIGURATION WORKSPACE</div><h1 id="heading">全局设置</h1><p id="subtitle">把配置拆成容易理解的小块。</p></div><div id="node-actions" class="node-actions"></div></div>
+      <div id="metrics" class="metrics"></div>
+      <div class="tabbar" role="tablist"><button data-tab="common" role="tab">常用设置</button><button data-tab="details" role="tab">启动与进程</button><button data-tab="yaml" role="tab">高级 YAML</button><div class="history"><button id="undo" title="撤销 Ctrl+Z" aria-label="撤销">↶</button><button id="redo" title="重做 Ctrl+Shift+Z" aria-label="重做">↷</button></div></div>
+      <section id="content" aria-live="polite"></section>
+    </main>
+    <footer class="statusbar"><span id="dirty"><i></i> 已保存</span><span>保留注释 · 自动备份 .bak · 重启调度器后生效</span></footer>
+  </div>
+  <div id="notice" role="status" hidden></div>
+  <dialog id="editor-dialog"><form method="dialog" id="dialog-form"><div class="dialog-heading"><div><div class="eyebrow">EDIT CONFIGURATION</div><h2 id="dialog-title"></h2></div><button type="button" id="dialog-close" class="icon-button" aria-label="关闭">×</button></div><p id="dialog-hint"></p><div id="dialog-fields"></div><div id="dialog-error" role="alert" hidden></div><div class="dialog-footer"><span>修改先暂存，保存后生效</span><button type="button" id="dialog-cancel">取消</button><button type="submit" class="primary">应用修改</button></div></form></dialog>
+</body>
+</html>
