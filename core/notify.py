@@ -174,7 +174,8 @@ def _send_message(title, desp, tags, config):
         if resp.get("code") == 0:
             log.info("Server酱推送成功: %s", title)
         else:
-            log.error("Server酱推送失败: %s", resp)
+            # Do not log a response body: upstream services may echo secrets.
+            log.error("Server酱推送失败：服务返回非成功状态")
     except Exception as exc:
         # 网络异常可能带含 SENDKEY 的 URL，日志只保留异常类型。
         log.error("Server酱推送异常（%s），后续调度继续", type(exc).__name__)
